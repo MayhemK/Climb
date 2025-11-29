@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqtga61jj8rv0"]
+[gd_scene load_steps=9 format=3 uid="uid://cqtga61jj8rv0"]
 
 [ext_resource type="PackedScene" uid="uid://70lyva0gq0iq" path="res://Scenes/MainCharacter.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://bfj8qwu605exl" path="res://Objects/Sample 2.fbx" id="2_qxrlw"]
 
 [sub_resource type="Sky" id="Sky_ebmjs"]
 
@@ -12,10 +13,16 @@ reflected_light_source = 2
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ebmjs"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxrlw"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_ebmjs"]
+lightmap_size_hint = Vector2i(77, 77)
+material = SubResource("StandardMaterial3D_qxrlw")
+flip_faces = true
+size = Vector2(15, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebmjs"]
-size = Vector3(13.741943, 1.1392212, 12.708008)
+size = Vector3(14.896057, 1.1392212, 14.908447)
 
 [node name="Node3D" type="Node3D"]
 
@@ -23,22 +30,27 @@ size = Vector3(13.741943, 1.1392212, 12.708008)
 environment = SubResource("Environment_mwb40")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.06975648, 0, 0.9975641, 0, 1, 0, -0.9975641, 0, -0.06975648, 0, 0, 0)
+transform = Transform3D(0.7083398, 0, -0.7058716, 0, 1, 0, 0.7058716, 0, 0.7083398, 0, 0, 0)
+directional_shadow_mode = 1
+sky_mode = 1
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ebmjs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09282839, 0, 0.0031051636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09282839, 1.1162891, 0.0031051636)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(-0.75470966, 0, 0.65605897, 0, 1, 0, -0.65605897, 0, -0.75470966, 1.5648816, 0.90632886, -1.5406312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0444617, 3.0020168)
 fov = 90.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_ebmjs")
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25214803, 0.022124171, 0.27184403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28277957, 0.022124171, 0.28245318)
 mesh = SubResource("PlaneMesh_ebmjs")
 
 [node name="FloorCollision" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015632272, -0.51187134, -1.3686523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2668835, -0.51187134, 0.23376465)
 shape = SubResource("BoxShape3D_ebmjs")
+
+[node name="Sample 2" parent="." instance=ExtResource("2_qxrlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68999445, 0.07051432, -5.945503)
