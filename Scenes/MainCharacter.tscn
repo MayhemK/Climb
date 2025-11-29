@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dar8gibp146o8" path="res://Scripts/character_body_3d.gd" id="1_li8uu"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1j4b"]
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ffy1q"]
 
 [sub_resource type="Skin" id="Skin_se01g"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1j4b"]
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_li8uu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9924773, 0)
-shape = SubResource("CapsuleShape3D_m1j4b")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98038423, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.52010465, 0)
 mesh = SubResource("CapsuleMesh_ffy1q")
 skin = SubResource("Skin_se01g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.52247405, 0)
+shape = SubResource("CapsuleShape3D_m1j4b")
