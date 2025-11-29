@@ -1,25 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqtga61jj8rv0"]
 
 [ext_resource type="PackedScene" uid="uid://70lyva0gq0iq" path="res://Scenes/MainCharacter.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://bfj8qwu605exl" path="res://Objects/Sample 2.fbx" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://dluq1yifwkhd" path="res://Objects/Low Poly Furniture/Bathroom/Bath.fbx" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cwftb2s1of73m" path="res://Objects/Low Poly Furniture/Carpets/Carpet C.fbx" id="3_wrm1d"]
 
-[sub_resource type="Sky" id="Sky_ebmjs"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wrm1d"]
 
-[sub_resource type="Environment" id="Environment_mwb40"]
-sky = SubResource("Sky_ebmjs")
-ambient_light_source = 3
-ambient_light_color = Color(1, 0, 0.40784314, 1)
-reflected_light_source = 2
+[sub_resource type="Sky" id="Sky_3dryh"]
+sky_material = SubResource("ProceduralSkyMaterial_wrm1d")
+
+[sub_resource type="Environment" id="Environment_wowpa"]
+background_mode = 2
+sky = SubResource("Sky_3dryh")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ebmjs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxrlw"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ebmjs"]
-lightmap_size_hint = Vector2i(77, 77)
-material = SubResource("StandardMaterial3D_qxrlw")
-flip_faces = true
-size = Vector2(15, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebmjs"]
 size = Vector3(14.896057, 1.1392212, 14.908447)
@@ -27,10 +21,10 @@ size = Vector3(14.896057, 1.1392212, 14.908447)
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mwb40")
+environment = SubResource("Environment_wowpa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.7083398, 0, -0.7058716, 0, 1, 0, 0.7058716, 0, 0.7083398, 0, 0, 0)
+transform = Transform3D(0.7083398, 0, -0.7058716, 0, 1, 0, 0.7058716, 0, 0.7083398, -2.2593105, 2.0501227, -1.0051482)
 directional_shadow_mode = 1
 sky_mode = 1
 
@@ -42,15 +36,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0444617, 3.0020168)
 fov = 90.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_ebmjs")
-
-[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28277957, 0.022124171, 0.28245318)
-mesh = SubResource("PlaneMesh_ebmjs")
 
 [node name="FloorCollision" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2668835, -0.51187134, 0.23376465)
 shape = SubResource("BoxShape3D_ebmjs")
 
-[node name="Sample 2" parent="." instance=ExtResource("2_qxrlw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68999445, 0.07051432, -5.945503)
+[node name="Bath" parent="." instance=ExtResource("2_wrm1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.420837, 3.2176187, -0.6829524)
+
+[node name="Carpet C" parent="." instance=ExtResource("3_wrm1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.340272, 0, -0.031)
